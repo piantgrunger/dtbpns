@@ -6,8 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pendaftar */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Pendaftars'), 'url' => ['index']];
+$this->title = $model->nik;
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,36 +15,42 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a(Yii::t('app', 'Cetak Kartu'), ['cetak', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
+    
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'jabatan_id',
+         
+            ['label'=>'Formasi',
+            'value'=>function($model){
+                return $model->jabatan->nama;
+            }],
+            ['label'=>'Kualifikasi',
+            'value'=>function($model){
+                return $model->jabatan->kualifikasi;
+            }],
+            ['label'=>'Penempatan',
+            'value'=>function($model){
+                return $model->jabatan->penempatan;
+            }],
             'nik',
             'nama',
             'alamat:ntext',
             'tempat_lahir',
-            'tanggal_lahir',
-            'jenis_kelamin',
+            'tanggal_lahir:date',
+            [
+                'attribute'=>'jenis_kelamin',
+                'value'=>function($model){
+                    return $model->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan';
+                }
+            ],
+            
             'agama',
             'no_hp',
             'pendidikan_terakhir',
-            'file_ktp',
-            'file_foto',
-            'file_ijazah',
-            'file_daftar_riwayat_hidup',
-            'file_surat_bebas_penyalahgunaan_narkoba',
-            'created_at',
+      
         ],
     ]) ?>
 

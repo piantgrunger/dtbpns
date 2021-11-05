@@ -17,12 +17,7 @@ $jabatan = ArrayHelper::map(\app\models\Jabatan::find()->all(),'id','nama');
 
     <?php $form = ActiveForm::begin([
         'id' => 'pendaftar-form',
-        'enableAjaxValidation' => false,
-        'enableClientValidation' => false,
-        'validateOnChange' => false,
-        'validateOnBlur' => false,
-        'validateOnType' => false,
-        'validateOnSubmit' => true,
+    
         'options'   => ['enctype' => 'multipart/form-data'],
         
     ]); ?>
@@ -68,19 +63,117 @@ $jabatan = ArrayHelper::map(\app\models\Jabatan::find()->all(),'id','nama');
 
     <?= $form->field($model, 'pendidikan_terakhir')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'file_surat_lamaran')->fileInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file_surat_lamaran')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial'=>true,
+        'showUpload' => false,
+        'initialPreview'=> [
+            Url::to(['/document\/'.$model->file_surat_lamaran],true),
+        ],
+        'initialPreviewFileType'=> 'pdf' , // image is the default and can be overridden in config below
+   
 
-    <?= $form->field($model, 'file_ktp')->fileInput(['maxlength' => true]) ?>
+       // 'initialCaption'=>$model->proposal,
+        'initialPreviewAsData'=>true,
+    ],
+]) ?>
 
-    <?= $form->field($model, 'file_foto')->fileInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file_ktp')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial'=>true,
+        'showUpload' => false,
+        'initialPreview'=> [
+            Url::to(['/document\/'.$model->file_ktp],true),
+        ],
+        'initialPreviewFileType'=> 'pdf' , // image is the default and can be overridden in config below
+   
 
-    <?= $form->field($model, 'file_ijazah')->fileInput(['maxlength' => true]) ?>
+       // 'initialCaption'=>$model->proposal,
+        'initialPreviewAsData'=>true,
+    ],
+]) ?>
 
-    <?= $form->field($model, 'file_daftar_riwayat_hidup')->fileInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file_foto')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial'=>true,
+        'showUpload' => false,
+        'initialPreview'=> [
+            Url::to(['/document\/'.$model->file_foto],true),
+        ],
+        'initialPreviewFileType'=> 'pdf' , // image is the default and can be overridden in config below
+   
 
-    <?= $form->field($model, 'file_surat_bebas_penyalahgunaan_narkoba')->fileInput(['maxlength' => true]) ?>
+       // 'initialCaption'=>$model->proposal,
+        'initialPreviewAsData'=>true,
+    ],
+]) ?>
 
-     <?= $form->field($model, 'file_dokumen_penunjang')->fileInput(['maxlength' => true]) ?>\
+    <?= $form->field($model, 'file_ijazah')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial'=>true,
+        'showUpload' => false,
+        'initialPreview'=> [
+            Url::to(['/document\/'.$model->file_ijazah],true),
+        ],
+        'initialPreviewFileType'=> 'pdf' , // image is the default and can be overridden in config below
+   
+
+       // 'initialCaption'=>$model->proposal,
+        'initialPreviewAsData'=>true,
+    ],
+]) ?>
+
+    <?= $form->field($model, 'file_daftar_riwayat_hidup')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial'=>true,
+        'showUpload' => false,
+        'initialPreview'=> [
+            Url::to(['/document\/'.$model->file_daftar_riwayat_hidup],true),
+        ],
+        'initialPreviewFileType'=> 'pdf' , // image is the default and can be overridden in config below
+   
+
+       // 'initialCaption'=>$model->proposal,
+        'initialPreviewAsData'=>true,
+    ],
+]) ?>
+
+    <?= $form->field($model, 'file_surat_bebas_penyalahgunaan_narkoba')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial'=>true,
+        'showUpload' => false,
+        'initialPreview'=> [
+            Url::to(['/document\/'.$model->file_surat_bebas_penyalahgunaan_narkoba],true),
+        ],
+        'initialPreviewFileType'=> 'pdf' , // image is the default and can be overridden in config below
+   
+
+       // 'initialCaption'=>$model->proposal,
+        'initialPreviewAsData'=>true,
+    ],
+]) ?>
+
+     <?= $form->field($model, 'file_dokumen_penunjang')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial'=>true,
+        'showUpload' => false,
+        'initialPreview'=> [
+            Url::to(['/document\/'.$model->file_dokumen_penunjang],true),
+        ],
+        'initialPreviewFileType'=> 'pdf' , // image is the default and can be overridden in config below
+   
+
+       // 'initialCaption'=>$model->proposal,
+        'initialPreviewAsData'=>true,
+    ],
+]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Simpan'), ['class' => 'btn btn-success']) ?>

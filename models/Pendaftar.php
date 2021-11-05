@@ -51,14 +51,19 @@ class Pendaftar extends \yii\db\ActiveRecord
     {
         return 'pendaftar';
     }
-
+    public function saveOld()
+    {
+        foreach ($this->_berkas as $file) {
+            $this->_old_file[$file] = $this->$file;
+        }
+    }
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['jabatan_id', 'nik', 'nama', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'agama', 'no_hp', 'pendidikan_terakhir', 'file_surat_lamaran', 'file_ktp', 'file_foto', 'file_ijazah', 'file_daftar_riwayat_hidup', 'file_surat_bebas_penyalahgunaan_narkoba', 'created_at'], 'required'],
+            [['jabatan_id', 'nik', 'nama', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'agama', 'no_hp','created_at'], 'required'],
             [['jabatan_id'], 'integer'],
             [['alamat'], 'string'],
             [['tanggal_lahir', 'created_at'], 'safe'],
@@ -115,9 +120,9 @@ class Pendaftar extends \yii\db\ActiveRecord
     public function upload($fieldName)
     {
         $path = Yii::getAlias('@app') . '/web/document/';
-        //s  die($fieldName);
+        //  die($fieldName);
         $image = UploadedFile::getInstance($this, $fieldName);
-        if (!empty($image) && $image->size !== 0) {
+        if (!empty($image) ) {
             $fileNames = $fieldName . $this->nik . '.' . $image->extension;
 
             if ($image->saveAs($path . $fileNames)) {

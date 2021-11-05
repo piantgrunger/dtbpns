@@ -23,7 +23,9 @@ $config = [
            'debug/*',
           'site/error',      
           'jabatan/index',  
-          'pendaftar/create' 
+          'pendaftar/create', 
+          'pendaftar/view',
+          'pendaftar/cetak',
          //  'mimin/*', // only in dev mode
        ],
        
@@ -38,6 +40,11 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+           'formatter' => [
+            'dateFormat' => 'dd MMMM yyyy',
+            'locale' => 'id-ID',
+         
+       ],
 
 
         'authManager'  => [

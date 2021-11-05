@@ -8,6 +8,7 @@ use app\models\PendaftarSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use kartik\mpdf\Pdf;
 
 /**
  * PendaftarController implements the CRUD actions for Pendaftar model.
@@ -62,12 +63,18 @@ class PendaftarController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+    
     public function actionCreate()
     {
         $model = new Pendaftar();
+        $model->saveOld();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->created_at = date('Y-m-d H:i:s');
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        
         }
 
         return $this->render('create', [
@@ -109,6 +116,8 @@ class PendaftarController extends Controller
         return $this->redirect(['index']);
     }
 
+
+    
     /**
      * Finds the Pendaftar model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -123,5 +132,32 @@ class PendaftarController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    public function actionCetak($id)
+    {
+        $model = $this->findModel($id);
+        $pdf = new Pdf([
+            'mode' => Pdf::MODE_UTF8, // leaner size using standard fonts
+            'content' => $this->renderPartial('cetak', ['model' => $model]),
+             // A4 paper format
+       
+              // format content from your own css file if needed or use the
+              // enhanced bootstrap css built by Krajee for mPDF formatting
+                  //     'cssFile' => '@app/web/css/print.css',
+       
+                   'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css',
+  
+            'options' => [
+                'title' => 'Cetak Data Pendaftar',
+                'subject' => 'Cetak Data Pendaftar',
+                'keywords' => 'cetak, data, pendaftar'
+            ],
+            'methods' => [
+                'SetHeader' => ['Cetak Data Pendaftar'],
+                'SetFooter' => ['UIN Sunan Ampel Surabaya'],
+            ]
+        ]);
+        return $pdf->render();
     }
 }

@@ -23,7 +23,9 @@
         "hscstudio/yii2-mimin": "~1.1.4",
         "kartik-v/yii2-widget-typeahead": "*",
         "kartik-v/yii2-widget-select2": "@dev",
-        "kartik-v/yii2-datecontrol": "dev-master"
+        "kartik-v/yii2-datecontrol": "dev-master",
+        "kartik-v/yii2-mpdf": "dev-master",
+        "kartik-v/yii2-widget-fileinput": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
