@@ -1,0 +1,244 @@
+html,
+body {
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    overflow: auto;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding: 15px;
+    border: none;
+}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+table img {
+    max-height: 40px;
+    max-width: 40px;
+    display: flex;
+    margin-right: 0;
+    align-items: center;
+    text-align: center;
+}
+
+ 
+.tabs {
+    -webkit-overflow-scrolling: touch;
+    align-items: stretch;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: space-between;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+.tabs li {
+    display: block;
+}
+
+.tabs a {
+    align-items: center;
+    border-bottom-color: #dbdbdb;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: #4a4a4a;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1px;
+    padding: 0.5em 1em;
+    vertical-align: top;
+}
+
+.tabs ul{
+    align-items: center;
+    border-bottom-color: #dbdbdb;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: flex-start;
+}
+
+
+
+.purchase-banner-active .navbar.fixed-top {
+    top: 55px;
+}
+@media (max-width: 991px)
+.navbar.default-layout {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+.navbar {
+    font-family: "roboto", sans-serif;
+    background: #222437;
+    transition: background 0.25s ease;
+    -webkit-transition: background 0.25s ease;
+    -moz-transition: background 0.25s ease;
+    -ms-transition: background 0.25s ease;
+}
+
+
+ table.table tbody .name {
+    max-width: initial;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 1.8;
+    display: flex;
+    
+    min-height: 40px;
+}
+
+ table.table {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 1.9rem !important ;
+}
+
+span.votes {
+    background: #0a9fc4;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+table .votes {
+    background: #0a9fc4;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin-left: 0.5rem;
+    border-radius: 10px;
+}
+
+.status {
+    margin-top: 1rem;
+    display: flex;
+    padding: 10px 0;
+    border-top: 1px solid #4c5c75;
+    border-bottom: 1px solid #4c5c75;
+}
+.description {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+
+.navbar-brand img {
+
+    height: 100%;
+    padding: 2px;
+    margin-top: -10px;
+
+}
